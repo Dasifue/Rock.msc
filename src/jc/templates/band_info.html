@@ -1,0 +1,28 @@
+{% extends 'core.html' %}
+{% block content %}
+<style>
+  .verse {
+    display: table;
+    margin: 0 auto; /* для центрирования display: table; не нужно указывать ширину блока, она рассчитывается самостоятельно */ 
+    white-space: pre-line; /* не нужен <br> */ 
+    word-wrap: break-word; /* чтобы слова переносились на маленьком экране */ 
+  }
+  </style>
+<p></p>
+<div class="card mb-3"  style="max-width: 1100px; background-color: rgb(80, 80, 80); margin: 0 auto; margin-top: 1%;">
+    <img src="{{band.image.url}}" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title text-white">{{band.name}}</h5>
+      <p class="verse card-text text-white">{{band.description}}</p>
+      <p></p>
+      <h5 class="card-text text-white">Члены группы</h5>
+    {% for person in members %}
+      <p class="card-text text-white">{{person.name}} {{person.last_name}} - {{person.instrument}}</p>
+    {% endfor %}
+    <h5 class="card-text text-white">Альбомы группы</h5>
+    {% for album in albums %}
+      <a class="btn btn-black text-white" href="{% url 'jc:album_info' album_id=album.id %}">{{album.name}}</a>
+    {% endfor %}
+    </div>
+  </div>
+{% endblock %}

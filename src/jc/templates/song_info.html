@@ -1,0 +1,32 @@
+{% extends 'core.html' %}
+{% block content %}
+{% for song in song_inf %}
+<p></p>
+<div class="card" style="max-width: 1100px; margin: 0 auto; border-color:rgb(80, 80, 80);">
+    <h5 class="card-header text-white" style="background-color:rgb(80, 80, 80);">{{song.name}}</h5>
+    <div class="card-body">
+      <p class="card-title">{{song.description}}</p>
+      <h5 class="card-title">Жанры песни</h5>
+      {% for genre in song.genre.all %}
+      <p>{{genre}}</p>
+      {% endfor %}
+      <style>
+      audio { width: 70%;
+        margin: 0 auto }
+      </style>
+      <audio controls>
+        <source src="{{ song.audio_file.url }}" type="audio/mpeg">
+    </audio>
+      <style>
+        .verse {
+          display: table;
+          margin: 0 auto; /* для центрирования display: table; не нужно указывать ширину блока, она рассчитывается самостоятельно */ 
+          white-space: pre-line; /* не нужен <br> */ 
+          word-wrap: break-word; /* чтобы слова переносились на маленьком экране */ 
+        }
+        </style>
+      <p class="verse">{{song.lyrics}}</p>
+    </div>
+  </div>
+{% endfor %}
+{% endblock %}

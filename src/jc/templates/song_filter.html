@@ -1,0 +1,26 @@
+{% extends 'core.html' %}
+{% block content %}
+<style>
+  .card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    padding: 16px;
+    text-align: center;
+  }
+  .card-container {
+      display: grid;
+      padding: 1rem;
+      grid-template-columns: repeat(3, minmax(320px, 1fr));
+      grid-gap: 1rem;
+  }
+  </style>
+<section class="card-container">
+{% for song in songs %}
+<div class="card" style="width: 20rem; background-color:rgb(80, 80, 80); margin-left: 10%; margin-top: 5%;">
+    <div class="card-body">
+      <h5 class="card-title text-white">{{song.name}}</h5>
+      <a href="{% url 'jc:song_info' song_id=song.id %}" class="btn btn-black text-white">Go to song</a>
+    </div>
+  </div>
+{% endfor %}
+</section>
+{% endblock %}

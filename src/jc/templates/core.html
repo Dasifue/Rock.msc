@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.6.0/dist/umd/popper.min.js" integrity="sha384-KsvD1yqQ1/1+IA7gi3P0tyJcT3vR+NdBTt13hSJ2lnve8agRGXTTyNaBYmCR/Nwi" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.min.js" integrity="sha384-nsg8ua9HAw1y0W1btsyWgBklPnCUAFLuTMS2G72MMONqmOymq585AcH49TLBQObG" crossorigin="anonymous"></script>    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <style>
+      .dropbtn {
+        background-color: #4CAF50;
+        color: white;
+        padding: 16px;
+        font-size: 16px;
+        border: none;
+      }
+      
+      .dropdown {
+        position: relative;
+        display: inline-block;
+      }
+      
+      .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #f1f1f1;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+      }
+      
+      .dropdown-content a {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+      }
+      
+      .dropdown-content a:hover {background-color: #ddd;}
+      
+      .dropdown:hover .dropdown-content {display: block;}
+      
+      .dropdown:hover .dropbtn {background-color: #3e8e41;}
+      </style>
+</head>
+<header>
+   </style>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+          <style>.logo-image{
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-top: -6px;
+        }</style>
+          <a class="navbar-brand">
+            <div class="logo-image">
+                  <img src="https://46.cdn.ekm.net/ekmps/shops/094f03/images/rock-horns-[2]-17116-1-p.jpg?w=768&h=768&v=1" class="img-fluid">
+            </div>
+          </a>
+          <a class="navbar-brand" href="#">Rock.msc</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+              <a class="nav-link active" aria-current="page" href="{% url 'jc:all_bands' %}">Home</a>
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <div class="dropdown">
+                    <button class="btn btn-dark dropdown-toggle">Bands</button>
+                    <div class="dropdown-content">
+                      {% for band in bands %}
+                      <li><a class="dropdown-item" href="{% url 'jc:band_info' band_id=band.id %}">{{band.name}}</a></li>
+                      {% endfor %}
+                    </div>
+                  </div>
+                  <p></p>
+                  <ul class="navbar-nav">
+                    <div class="dropdown">
+                        <button class="btn btn-dark dropdown-toggle">Genres</button>
+                        <div class="dropdown-content">
+                          {% for genre in genres %}
+                          <li><a class="dropdown-item" href="{% url 'jc:song_filter' genre_id=genre.id %}">{{genre.name}}</a></li>
+                          {% endfor %}
+                        </div>
+                      </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+</header>
+<body>
+  <style>
+    body {
+      background-image: url('https://thumb.tildacdn.com/tild6263-3531-4732-b661-396338643061/-/format/webp/Frame_4.png');
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-size: cover;
+    }
+    </style>
+    <div class="wrapper">
+      <div class="sub"></div>
+        {% block content %}
+        {% endblock %}
+    </div>
+</body>
+<p></p>
+<!-- Footer -->
+<footer class="bg-dark text-center text-lg-start">
+  <!-- Grid container -->
+  <div class="container p-4">
+    <!--Grid row-->
+    <div class="row">
+      <!--Grid column-->
+      <div class="col-lg-6 col-md-12 mb-4 mb-md-0 text-white">
+        <h5 class="text-uppercase">Footer Content</h5>
+
+        <p>
+          Мой тестовый проект <br>
+          Здесь может быть ваша реклама
+        </p>
+      </div>
+      <!--Grid column-->
+
+      <!--Grid column-->
+      <div class="col-lg-3 col-md-6 mb-4 mb-md-0 text-white">
+        <h5 class="text-uppercase white">Links</h5>
+
+        <ul class="list-unstyled mb-0">
+          <li>
+            <a href="#!" class="text-white">Link 1</a>
+          </li>
+          <li>
+            <a href="#!" class="text-white">Link 2</a>
+          </li>
+          <li>
+            <a href="#!" class="text-white">Link 3</a>
+          </li>
+          <li>
+            <a href="#!" class="text-white">Link 4</a>
+          </li>
+        </ul>
+      </div>
+      <!--Grid column-->
+
+      <!--Grid column-->
+      <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+        <h5 class="text-uppercase mb-0 text-white">Links</h5>
+
+        <ul class="list-unstyled">
+          <li>
+            <a href="#!" class="text-white">Link 1</a>
+          </li>
+          <li>
+            <a href="#!" class="text-white">Link 2</a>
+          </li>
+          <li>
+            <a href="#!" class="text-white">Link 3</a>
+          </li>
+          <li>
+            <a href="#!" class="text-white">Link 4</a>
+          </li>
+        </ul>
+      </div>
+      <!--Grid column-->
+    </div>
+    <!--Grid row-->
+  </div>
+  <!-- Grid container -->
+
+  <!-- Copyright -->
+  <div class="text-center p-3 text-white" style="background-color: rgba(0, 0, 0, 0.2);">
+    © 2020 Copyright:
+    <a class="text-white" href="https://mdbootstrap.com/">MDBootstrap.com</a>
+  </div>
+  <!-- Copyright -->
+</footer>
+<!-- Footer -->
+</html>

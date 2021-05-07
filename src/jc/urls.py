@@ -1,4 +1,4 @@
-from .views import all_bands, band_info, song_info, song_filter, album_info
+from .views import all_bands, band_info, song_info, song_filter, album_info, create_comment
 from django.urls import path, include
 
 app_name = 'jc'
@@ -9,4 +9,5 @@ urlpatterns = [
     path('song_info/<int:song_id>', song_info, name = 'song_info'),
     path('song_filter/<int:genre_id>', song_filter, name='song_filter'),
     path('album_info/<int:album_id>', album_info, name = 'album_info'),
+    path('create_comment/', create_comment, name='create_comment'),
 ]

@@ -57,4 +57,8 @@ class Song(models.Model):
         verbose_name_plural = 'песни'
 
 
+
+class Comment(models.Model):
+    author = models.CharField(max_length = 50, verbose_name='автор')
+    text = models.TextField(max_length=500, verbose_name='текст')
     

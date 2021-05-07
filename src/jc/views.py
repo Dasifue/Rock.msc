@@ -1,11 +1,14 @@
-from django.shortcuts import render
-from .models import Person, Song, Band, Genre, Album
-
+import requests
+from django.shortcuts import render, redirect
+from .models import Person, Song, Band, Genre, Album, Comment
+from jc.forms import CreateCommentForm
+from django.conf import settings
 #   BANDS
 def all_bands(request):
     genres = Genre.objects.all()
     bands = Band.objects.all()
-    return render(request, 'all_bands.html', {'bands':bands,'genres':genres})
+    songs = Song.objects.all()
+    return render(request, 'all_bands.html', {'bands':bands,'genres':genres, 'songs':songs})
 
 def band_info(request, band_id):
     band = Band.objects.get(id = band_id)
@@ -14,15 +17,9 @@ def band_info(request, band_id):
     return render(request, 'band_info.html', {'band':band, 'albums':albums, 'members':members})
 
 
-
-#   GENRES
-def all_genres(request):
-    genres = Genre.objects.all()
-    return render(request, 'all_bands.html', {'genres':genres})
-
-
-
 #   SONGS
+
+
 def song_info(request, song_id):
     song_inf = Song.objects.filter(id=song_id)
     return render(request, 'song_info.html', {'song_inf':song_inf})
@@ -35,3 +32,20 @@ def album_info(request, album_id):
     songs = Song.objects.filter(album = album_id)
     album = Album.objects.get(id=album_id)
     return render(request, 'album_info.html', {'songs':songs, 'album':album})    
+
+
+#Create comment
+def create_comment(request):
+    form = CreateCommentForm()
+    if request.method == 'POST':
+        author = request.POST.get('author')
+        text = request.POST.get('text')
+        save_form = CreateCommentForm(request.POST)
+        if save_form.is_valid():
+            note = save_form.save(commit=False)
+            note.save()
+            print(settings.URL+'author'+'text')
+            res = requests.get(settings.URL+f'{author}\n{text}')
+            print(res)
+            return redirect('jc:all_bands')
+    return render(request, 'create_comment.html', {'form':form})

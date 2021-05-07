@@ -28,6 +28,8 @@ DEBUG = True
 ALLOWED_HOSTS = ['127.0.0.1']
 
 
+
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -127,3 +129,7 @@ import os
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
+
+TELEGRAM_CHATID = '-1001263969085'
+TELEGRAM_TOKEN = '1731122688:AAFtytcVR0ImEYEqgFJX0qDMDXTx22yRFX0'
+URL=f'https://api.telegram.org/bot{TELEGRAM_TOKEN}/sendMessage?chat_id={TELEGRAM_CHATID}&text='

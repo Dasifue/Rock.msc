@@ -26,6 +26,7 @@ class Person(models.Model):
     last_name = models.CharField(max_length=50, verbose_name = 'фамилия')
     instrument = models.CharField(max_length=30, verbose_name = 'инструмент')
     band = models.ForeignKey(Band, on_delete=models.CASCADE)
+    info = models.TextField(max_length=2000, blank=True, null=True)
     def __str__(self):
         return f"{self.name}"
     class Meta:

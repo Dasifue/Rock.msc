@@ -87,6 +87,15 @@
                           {% endfor %}
                         </div>
                       </div>
+                   <div class="dropdown">
+                    <button class="btn btn-dark dropdown-toggle">Songs</button>
+                    <div class="dropdown-content">
+                      <li><a class="dropdown-item" href="{% url 'jc:all_songs' %}">All</a></li>
+                      {% for band in dropdown.bands %}
+                      <li><a class="dropdown-item" href="{% url 'jc:song_playlist' band_id=band.id %}">{{band.name}}</a></li>
+                      {% endfor %}
+                    </div>
+                  </div>  
             </div>
           </div>
         </div>

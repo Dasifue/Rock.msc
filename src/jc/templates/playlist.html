@@ -1,15 +1,14 @@
 {% extends 'core.html' %}
 {% block content %}
-<p></p>
 {% for song in songs %}
 <div class="song"  style="max-width: 1000px; background-color: rgb(80, 80, 80); margin: 0 auto;">
-    <h5 class="card-header text-white">{{band.name}}</h5>
+    <h5 class="card-header text-white">{{song.album.band}} - {{song.album}}</h5>
     <div class="card-body">
       <h5 class="card-title text-white">{{song.name}}</h5>
       <audio controls>
         <source src="{{ song.audio_file.url }}" type="audio/mpeg">
     </audio>
-      <a href="{% url 'jc:song_info' song_id=song.id %}" class="btn btn-dark">more info</a>
+    <a href="{% url 'jc:song_info' song_id=song.id %}" class="btn btn-dark">more info</a>
     </div>
   </div> 
   <p></p>

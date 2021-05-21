@@ -11,7 +11,6 @@ def get_core_html_data():
     return {'bands':bands, 'genres':genres}
 
 def all_bands(request):
-    genres = Genre.objects.all()
     bands = Band.objects.all()
     songs = Song.objects.all()
     return render(request, 'all_bands.html', {'dropdown': get_core_html_data(), 'songs':songs, 'bands':bands})
@@ -23,6 +22,15 @@ def band_info(request, band_id):
     return render(request, 'band_info.html', {'band':band, 'albums':albums, 'members':members, 'dropdown': get_core_html_data()})
 
 #   SONGS
+def all_songs(request):
+    songs = Song.objects.all()
+    return render(request, 'playlist.html', {'songs':songs})
+
+def song_playlist(request, band_id):
+    songs = Song.objects.filter(album__band_id = band_id)
+    all_songs = Song.objects.all()
+    return render(request, 'playlist.html', {'songs':songs, 'all_songs':all_songs, 'dropdown': get_core_html_data()})
+
 def song_info(request, song_id):
     song_inf = Song.objects.filter(id=song_id)
     return render(request, 'song_info.html', {'song_inf':song_inf, 'dropdown': get_core_html_data()})

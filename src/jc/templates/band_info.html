@@ -17,7 +17,9 @@
       <p></p>
       <h5 class="card-text text-white">Члены группы</h5>
     {% for person in members %}
-      <p class="card-text text-white">{{person.name}} {{person.last_name}} - {{person.instrument}}</p>
+      <p>
+        <a class="card-text text-white" href="{% url 'jc:person_info' person_id=person.id %}">>{{person.name}} {{person.last_name}} - {{person.instrument}}</a>
+      </p>
     {% endfor %}
     <h5 class="card-text text-white">Альбомы группы</h5>
     {% for album in albums %}

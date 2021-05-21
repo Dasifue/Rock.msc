@@ -62,4 +62,9 @@ class Song(models.Model):
 class Comment(models.Model):
     author = models.CharField(max_length = 50, verbose_name='автор')
     text = models.TextField(max_length=500, verbose_name='текст')
+    def __str__(self):
+        return f"{self.author}"
+    class Meta:
+        verbose_name = 'комментарий'
+        verbose_name_plural = 'комментарии'
     

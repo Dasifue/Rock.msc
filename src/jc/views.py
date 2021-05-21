@@ -14,7 +14,7 @@ def all_bands(request):
     genres = Genre.objects.all()
     bands = Band.objects.all()
     songs = Song.objects.all()
-    return render(request, 'all_bands.html', {'dropdown': get_core_html_data(), 'songs':songs})
+    return render(request, 'all_bands.html', {'dropdown': get_core_html_data(), 'songs':songs, 'bands':bands})
 
 def band_info(request, band_id):
     band = Band.objects.get(id = band_id)
@@ -52,4 +52,10 @@ def create_comment(request):
             return redirect('jc:all_bands')
     return render(request, 'create_comment.html', {'form':form, 'dropdown': get_core_html_data() })
 
+
+#   persons
+
+def person_info(request, person_id):
+    person = Person.objects.get(id = person_id)
+    return render(request, 'person_info.html', {'person':person, 'dropdown': get_core_html_data()})
 

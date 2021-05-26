@@ -1,9 +1,21 @@
 {% extends 'core.html' %}
 {% block content %}
 <p></p>
+<style>
+.song{
+  max-width: 1000px;
+  background-color: rgb(80, 80, 80); 
+  margin: 0 auto;
+  transition: background-color 1s linear;
+}
+
+.song:hover {
+          background-color: rgb(48, 47, 47);
+        }
+</style>
 {% for song in songs %}
-<div class="song"  style="max-width: 1000px; background-color: rgb(80, 80, 80); margin: 0 auto;">
-    <h5 class="card-header text-white">{{band.name}}</h5>
+<div class="song">
+    <h5 class="card-header text-white">{{song.album.band}} - {{song.album}} </h5>
     <div class="card-body">
       <h5 class="card-title text-white">{{song.name}}</h5>
       <audio controls>

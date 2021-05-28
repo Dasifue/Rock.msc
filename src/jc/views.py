@@ -70,3 +70,11 @@ def person_info(request, person_id):
     person = Person.objects.get(id = person_id)
     return render(request, 'person_info.html', {'person':person, 'dropdown': get_core_html_data()})
 
+# search
+
+def search(request):
+    query = request.GET.get('q')
+    bands = Band.objects.filter(name__icontains=query)
+    songs = Song.objects.filter(name__icontains=query)
+    return render(request, 'search_result.html', {'bands':bands, 'songs':songs})
+

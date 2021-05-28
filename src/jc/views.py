@@ -1,4 +1,5 @@
 import requests
+import datetime
 from django.shortcuts import render, redirect
 from .models import Person, Song, Band, Genre, Album, Comment
 from jc.forms import CreateCommentForm
@@ -8,7 +9,9 @@ from django.conf import settings
 def get_core_html_data():
     genres = Genre.objects.all()
     bands = Band.objects.all()
-    return {'bands':bands, 'genres':genres}
+    now = datetime.datetime.now()
+    time = now.strftime("%d-%m-%Y %H:%M")
+    return {'bands':bands, 'genres':genres, 'time':time}
 
 def all_bands(request):
     bands = Band.objects.all()

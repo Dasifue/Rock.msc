@@ -40,7 +40,8 @@ def song_info(request, song_id):
 
 def song_filter(request, genre_id):
     songs = Song.objects.filter(genre = genre_id)
-    return render(request, 'song_filter.html', {'songs':songs, 'dropdown': get_core_html_data()})
+    genre = Genre.objects.get(id = genre_id)
+    return render(request, 'song_filter.html', {'songs':songs, 'genre':genre, 'dropdown': get_core_html_data()})
 
 def album_info(request, album_id):
     songs = Song.objects.filter(album = album_id)

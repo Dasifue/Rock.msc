@@ -18,12 +18,14 @@
       <h5 class="card-text text-white">Члены группы</h5>
     {% for person in members %}
       <p>
-        <a class="card-text text-white" href="{% url 'jc:person_info' person_id=person.id %}">>{{person.name}} {{person.last_name}} - {{person.instrument}}</a>
+        <a class="btn btn-black text-white" href="{% url 'jc:person_info' person_id=person.id %}">{{person.name}} {{person.last_name}} - {{person.instrument}}</a>
       </p>
     {% endfor %}
     <h5 class="card-text text-white">Альбомы группы</h5>
     {% for album in albums %}
+    <p>
       <a class="btn btn-black text-white" href="{% url 'jc:album_info' album_id=album.id %}">{{album.name}}</a>
+    </p>  
     {% endfor %}
     </div>
   </div>

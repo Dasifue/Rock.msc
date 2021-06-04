@@ -8,7 +8,7 @@
       <p class="card-title">{{song.description}}</p>
       <h5 class="card-title">Жанры песни</h5>
       {% for genre in song.genre.all %}
-      <p>{{genre}}</p>
+      <p><a class='btn btn-black text-black' href = "{% url 'jc:song_filter' genre_id=genre.id %}">{{genre}}</a></p>
       {% endfor %}
       <style>
       audio { width: 70%;

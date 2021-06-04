@@ -1,16 +1,6 @@
 {% extends 'core.html' %}
 {% block content %}
 <style>
-a:hover {
-  background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/9632/squiggle.svg");
-  background-position: bottom;
-  background-repeat: repeat-x;
-  background-size: 20%;
-  border-bottom: 0;
-  padding-bottom: .3em;
-  text-decoration: none;
-}
-
   .verse {
     display: table;
     margin: 0 auto; /* для центрирования display: table; не нужно указывать ширину блока, она рассчитывается самостоятельно */ 
@@ -25,7 +15,9 @@ a:hover {
       <p class="verse card-text text-white">{{album.description}}</p>
       <h5 class="text-white">Песни альбома</h5>
       {% for song in songs %}
+      <p>
       <a href="{% url 'jc:song_info' song_id=song.id %}" class="btn btn-black text-white">{{song.name}}</a>
+      </p>
       {% endfor %}
     </div>
   </div>

@@ -82,8 +82,8 @@ DATABASES = {
         'NAME': 'jc_data',
         'USER': 'jc_user',
         'PASSWORD' : '1234567890',
-        'HOST' : '192.168.99.100',
-        'PORT': '5434',
+        'HOST' : '127.0.0.1',
+        'PORT': '5432',
     }
 }
 
